@@ -56,41 +56,43 @@ pre{background:#0e131d;padding:14px;border-radius:8px;overflow:auto}
 
 <p>Pick a tool you&#x27;re paying for. We show the <strong>cheaper or better alternative</strong> with real 2026 pricing. No signup.</p>
 
-<p>&lt;div class=&quot;toolbox&quot;&gt;</p>
-<p>&lt;select id=&quot;tool&quot;&gt;</p>
-<p>&lt;option value=&quot;&quot;&gt;— Select a tool you pay for —&lt;/option&gt;</p>
-<p>&lt;option value=&quot;chatgpt&quot;&gt;ChatGPT Plus ($20)&lt;/option&gt;</p>
-<p>&lt;option value=&quot;claude&quot;&gt;Claude Pro ($20)&lt;/option&gt;</p>
-<p>&lt;option value=&quot;gemini&quot;&gt;Gemini Advanced ($20)&lt;/option&gt;</p>
-<p>&lt;option value=&quot;jasper&quot;&gt;Jasper ($49)&lt;/option&gt;</p>
-<p>&lt;option value=&quot;writesonic&quot;&gt;Writesonic ($39)&lt;/option&gt;</p>
-<p>&lt;option value=&quot;rytr&quot;&gt;Rytr ($9)&lt;/option&gt;</p>
-<p>&lt;/select&gt;</p>
-<p>&lt;button class=&quot;btn&quot; onclick=&quot;find()&quot;&gt;Find alternative&lt;/button&gt;</p>
-<p>&lt;/div&gt;</p>
 
-<p>&lt;div class=&quot;result&quot; id=&quot;out&quot; style=&quot;display:none&quot;&gt;&lt;/div&gt;</p>
+<div class="toolbox">
+<select id="tool">
+<option value="">— Select a tool you pay for —</option>
+<option value="chatgpt">ChatGPT Plus ($20)</option>
+<option value="claude">Claude Pro ($20)</option>
+<option value="gemini">Gemini Advanced ($20)</option>
+<option value="jasper">Jasper ($49)</option>
+<option value="writesonic">Writesonic ($39)</option>
+<option value="rytr">Rytr ($9)</option>
+</select>
+<button class="btn" onclick="find()">Find alternative</button>
+</div>
 
-<p>&lt;script&gt;</p>
-<p>const DATA = {</p>
-<p>  chatgpt: {alt:&quot;DeepSeek (Free) or Rytr ($9)&quot;, save:&quot;Save $11–20/mo&quot;, note:&quot;For light use, DeepSeek/Mistral are free. For writing-only, Rytr is $9.&quot;},</p>
-<p>  claude: {alt:&quot;ChatGPT Plus ($20) or DeepSeek (Free)&quot;, save:&quot;Same price / free&quot;, note:&quot;At $20 they&#x27;re equal; drop to free tiers if usage is light.&quot;},</p>
-<p>  gemini: {alt:&quot;ChatGPT Plus ($20)&quot;, save:&quot;$0 (same tier)&quot;, note:&quot;Only keep Gemini if deep in Google Workspace.&quot;},</p>
-<p>  jasper: {alt:&quot;Writesonic ($39) or ChatGPT+Claude ($40)&quot;, save:&quot;Save $9–10/mo&quot;, note:&quot;Covers ~80% of Jasper for half the entry cost.&quot;},</p>
-<p>  writesonic: {alt:&quot;ChatGPT Plus ($20)&quot;, save:&quot;Save $19/mo&quot;, note:&quot;If SEO isn&#x27;t your main channel, ChatGPT covers it.&quot;},</p>
-<p>  rytr: {alt:&quot;DeepSeek (Free)&quot;, save:&quot;Save $9/mo&quot;, note:&quot;Rytr is already the cheapest paid — go free if volume is low.&quot;}</p>
-<p>};</p>
-<p>function find(){</p>
-<p>  const v=document.getElementById(&#x27;tool&#x27;).value;</p>
-<p>  const o=document.getElementById(&#x27;out&#x27;);</p>
-<p>  if(!v){o.style.display=&#x27;none&#x27;;return;}</p>
-<p>  const d=DATA[v];</p>
-<p>  o.style.display=&#x27;block&#x27;;</p>
-<p>  o.innerHTML=<code>&lt;h3&gt;Cheaper / better alternative&lt;/h3&gt;&lt;p class=&quot;good&quot;&gt;${d.alt}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;${d.save}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;${d.note}&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;alternatives.html&quot;&gt;See all alternatives →&lt;/a&gt;&lt;/p&gt;</code>;</p>
-<p>}</p>
-<p>&lt;/script&gt;</p>
+<div class="result" id="out" style="display:none"></div>
 
-<p>&lt;p&gt;&lt;span class=&quot;pill&quot;&gt;Data verified July 2026&lt;/span&gt; &lt;span class=&quot;pill&quot;&gt;No tracking&lt;/span&gt;&lt;/p&gt;</p>
+<script>
+const DATA = {
+  chatgpt: {alt:"DeepSeek (Free) or Rytr ($9)", save:"Save $11–20/mo", note:"For light use, DeepSeek/Mistral are free. For writing-only, Rytr is $9."},
+  claude: {alt:"ChatGPT Plus ($20) or DeepSeek (Free)", save:"Same price / free", note:"At $20 they're equal; drop to free tiers if usage is light."},
+  gemini: {alt:"ChatGPT Plus ($20)", save:"$0 (same tier)", note:"Only keep Gemini if deep in Google Workspace."},
+  jasper: {alt:"Writesonic ($39) or ChatGPT+Claude ($40)", save:"Save $9–10/mo", note:"Covers ~80% of Jasper for half the entry cost."},
+  writesonic: {alt:"ChatGPT Plus ($20)", save:"Save $19/mo", note:"If SEO isn't your main channel, ChatGPT covers it."},
+  rytr: {alt:"DeepSeek (Free)", save:"Save $9/mo", note:"Rytr is already the cheapest paid — go free if volume is low."}
+};
+function find(){
+  const v=document.getElementById('tool').value;
+  const o=document.getElementById('out');
+  if(!v){o.style.display='none';return;}
+  const d=DATA[v];
+  o.style.display='block';
+  o.innerHTML=`<h3>Cheaper / better alternative</h3><p class="good">${d.alt}</p><p><strong>${d.save}</strong></p><p>${d.note}</p><p><a href="alternatives.html">See all alternatives →</a></p>`;
+}
+</script>
+<pre><code>
+
+<p><span class="pill">Data verified July 2026</span> <span class="pill">No tracking</span></p>
 
 </main>
 <footer>© 2026 AltFor.ai — faceless AI-tool comparison, automated.</footer>
