@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alternative Finder — Find the Cheaper AI Tool | AltFor.ai</title>
+<meta name="description" content="A free mini-tool: pick a paid AI tool and instantly see the cheaper or better alternative with 2026 pricing.">
+<style>
+:root{--bg:#0b0e14;--card:#141925;--accent:#ff5a3c;--text:#e6e9ef;--muted:#8b93a7;--green:#3ddc84;--line:#222a3a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding-bottom:60px}
+header{background:linear-gradient(135deg,#11151f,#1a2030);border-bottom:1px solid var(--line);padding:22px 20px}
+.wrap{max-width:880px;margin:0 auto}
+.brand{font-size:1.7rem;font-weight:800;color:#fff;letter-spacing:-.5px}
+.brand span{color:var(--accent)}
+.tagline{color:var(--muted);font-size:.95rem;margin-top:4px}
+nav{margin-top:14px;display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}
+nav a:hover,nav a.active{color:var(--accent)}
+main{padding:30px 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:22px}
+h1{font-size:2rem;margin-bottom:10px;color:#fff}
+h2{font-size:1.4rem;margin:26px 0 10px;color:#fff;border-left:3px solid var(--accent);padding-left:10px}
+h3{font-size:1.1rem;margin:18px 0 8px;color:#fff}
+p{margin:10px 0;color:#d4d9e4}
+ul{margin:10px 0 10px 22px}
+li{margin:6px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.92rem}
+td,th{border:1px solid var(--line);padding:10px 12px;text-align:left}
+th{background:#1b2233;color:#fff;font-weight:700}
+td:first-child{font-weight:600}
+.good{color:var(--green);font-weight:700}
+.bad{color:var(--accent);font-weight:700}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 22px;border-radius:8px;font-weight:700;margin-top:8px}
+.btn:hover{opacity:.9;text-decoration:none}
+.pill{display:inline-block;background:#1b2233;border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:.8rem;color:var(--muted);margin:3px}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 20px;border-top:1px solid var(--line)}
+.toolbox{display:grid;grid-template-columns:1fr;gap:12px}
+input,select{padding:11px;border-radius:8px;border:1px solid var(--line);background:#0e131d;color:var(--text);font-size:1rem;width:100%}
+.result{margin-top:16px;padding:16px;background:#0e131d;border:1px solid var(--line);border-radius:10px}
+code{background:#0e131d;padding:2px 6px;border-radius:4px;font-size:.9rem}
+pre{background:#0e131d;padding:14px;border-radius:8px;overflow:auto}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="brand">AltFor.ai</div>
+<div class="tagline">The cheaper, better alternative to every AI tool you're overpaying for.</div>
+<nav><a href="/alternatives.html" class="">Alternatives</a><a href="/compare.html" class="">Compare</a><a href="/tool.html" class="active">Mini-Tool</a><a href="/index.html" class="">AI Tool Index</a></nav>
+</div></header>
+<main class="wrap">
+
+<h1>Alternative Finder</h1>
+
+<p>Pick a tool you&#x27;re paying for. We show the <strong>cheaper or better alternative</strong> with real 2026 pricing. No signup.</p>
+
+<p>&lt;div class=&quot;toolbox&quot;&gt;</p>
+<p>&lt;select id=&quot;tool&quot;&gt;</p>
+<p>&lt;option value=&quot;&quot;&gt;— Select a tool you pay for —&lt;/option&gt;</p>
+<p>&lt;option value=&quot;chatgpt&quot;&gt;ChatGPT Plus ($20)&lt;/option&gt;</p>
+<p>&lt;option value=&quot;claude&quot;&gt;Claude Pro ($20)&lt;/option&gt;</p>
+<p>&lt;option value=&quot;gemini&quot;&gt;Gemini Advanced ($20)&lt;/option&gt;</p>
+<p>&lt;option value=&quot;jasper&quot;&gt;Jasper ($49)&lt;/option&gt;</p>
+<p>&lt;option value=&quot;writesonic&quot;&gt;Writesonic ($39)&lt;/option&gt;</p>
+<p>&lt;option value=&quot;rytr&quot;&gt;Rytr ($9)&lt;/option&gt;</p>
+<p>&lt;/select&gt;</p>
+<p>&lt;button class=&quot;btn&quot; onclick=&quot;find()&quot;&gt;Find alternative&lt;/button&gt;</p>
+<p>&lt;/div&gt;</p>
+
+<p>&lt;div class=&quot;result&quot; id=&quot;out&quot; style=&quot;display:none&quot;&gt;&lt;/div&gt;</p>
+
+<p>&lt;script&gt;</p>
+<p>const DATA = {</p>
+<p>  chatgpt: {alt:&quot;DeepSeek (Free) or Rytr ($9)&quot;, save:&quot;Save $11–20/mo&quot;, note:&quot;For light use, DeepSeek/Mistral are free. For writing-only, Rytr is $9.&quot;},</p>
+<p>  claude: {alt:&quot;ChatGPT Plus ($20) or DeepSeek (Free)&quot;, save:&quot;Same price / free&quot;, note:&quot;At $20 they&#x27;re equal; drop to free tiers if usage is light.&quot;},</p>
+<p>  gemini: {alt:&quot;ChatGPT Plus ($20)&quot;, save:&quot;$0 (same tier)&quot;, note:&quot;Only keep Gemini if deep in Google Workspace.&quot;},</p>
+<p>  jasper: {alt:&quot;Writesonic ($39) or ChatGPT+Claude ($40)&quot;, save:&quot;Save $9–10/mo&quot;, note:&quot;Covers ~80% of Jasper for half the entry cost.&quot;},</p>
+<p>  writesonic: {alt:&quot;ChatGPT Plus ($20)&quot;, save:&quot;Save $19/mo&quot;, note:&quot;If SEO isn&#x27;t your main channel, ChatGPT covers it.&quot;},</p>
+<p>  rytr: {alt:&quot;DeepSeek (Free)&quot;, save:&quot;Save $9/mo&quot;, note:&quot;Rytr is already the cheapest paid — go free if volume is low.&quot;}</p>
+<p>};</p>
+<p>function find(){</p>
+<p>  const v=document.getElementById(&#x27;tool&#x27;).value;</p>
+<p>  const o=document.getElementById(&#x27;out&#x27;);</p>
+<p>  if(!v){o.style.display=&#x27;none&#x27;;return;}</p>
+<p>  const d=DATA[v];</p>
+<p>  o.style.display=&#x27;block&#x27;;</p>
+<p>  o.innerHTML=<code>&lt;h3&gt;Cheaper / better alternative&lt;/h3&gt;&lt;p class=&quot;good&quot;&gt;${d.alt}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;${d.save}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;${d.note}&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;alternatives.html&quot;&gt;See all alternatives →&lt;/a&gt;&lt;/p&gt;</code>;</p>
+<p>}</p>
+<p>&lt;/script&gt;</p>
+
+<p>&lt;p&gt;&lt;span class=&quot;pill&quot;&gt;Data verified July 2026&lt;/span&gt; &lt;span class=&quot;pill&quot;&gt;No tracking&lt;/span&gt;&lt;/p&gt;</p>
+
+</main>
+<footer>© 2026 AltFor.ai — faceless AI-tool comparison, automated.</footer>
+</body>
+</html>
